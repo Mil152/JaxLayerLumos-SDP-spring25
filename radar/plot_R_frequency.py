@@ -112,7 +112,7 @@ def plot_R_frequency():
     # Table 2
     frequencies = jnp.linspace(0.1e9, 10e9, 1000)
     #frequencies = jnp.array([0.1e9])
-    filename = "./data/TMH.csv"
+    filename = "./data/LF.csv"
     #filename = "./data/CHF.csv"
     prefix = filename.split("/")[-1].replace(".csv", "")
 

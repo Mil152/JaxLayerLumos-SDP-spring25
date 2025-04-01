@@ -1,7 +1,7 @@
 import jax.numpy as jnp
 
 from jaxlayerlumos import utils_units
-
+import scipy.constants as scic
 
 def convert_frequencies_to_wavelengths(frequencies):
     assert isinstance(frequencies, jnp.ndarray)
@@ -9,6 +9,15 @@ def convert_frequencies_to_wavelengths(frequencies):
 
     wavelengths = utils_units.get_light_speed() / frequencies
     return wavelengths
+
+def convert_wavelengths_to_energy(wavelengths):
+    # energy is in eV
+    assert isinstance(wavelengths, jnp.ndarray)
+    assert wavelengths.ndim == 1
+
+    energy = utils_units.get_light_speed()* scic.constants.h/ wavelengths/scic.e
+    return energy
+
 
 
 def convert_wavelengths_to_frequencies(wavelengths):

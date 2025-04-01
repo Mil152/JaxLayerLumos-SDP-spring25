@@ -130,6 +130,9 @@ def interpolate_material_n_k(material, frequencies):
     if material == "Air":
         n_material = jnp.ones_like(frequencies)
         k_material = jnp.zeros_like(frequencies)
+    elif material == "PEC":
+        n_material = jnp.zeros_like(frequencies) + jnp.inf
+        k_material = jnp.zeros_like(frequencies)
     else:
         data_n, data_k = load_material(material)
         n_material = interpolate(data_n, frequencies)
